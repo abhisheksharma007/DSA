@@ -117,21 +117,21 @@ def subarray_sum(list1, target):
     return []
             
 
-nums = [1, 2, 4, 4, 5]
-target = 9
-print ( subarray_sum(nums, target) )
+# nums = [1, 2, 4, 4, 5]
+# target = 9
+# print ( subarray_sum(nums, target) )
 
-nums = [-1, 2, 3, -4, 5]
-target = 0
-print ( subarray_sum(nums, target) )
+# nums = [-1, 2, 3, -4, 5]
+# target = 0
+# print ( subarray_sum(nums, target) )
 
-nums = [2, 3, 4, 5, 6]
-target = 3
-print ( subarray_sum(nums, target) )
+# nums = [2, 3, 4, 5, 6]
+# target = 3
+# print ( subarray_sum(nums, target) )
 
-nums = []
-target = 0
-print ( subarray_sum(nums, target) )
+# nums = []
+# target = 0
+# print ( subarray_sum(nums, target) )
 
 
 
@@ -154,11 +154,11 @@ def longest_consecutive_sequence(list1):
     
     temp = sorted(set(list1))
     longest_seq = []
-    current_seq = []
-    for i in range(len(temp)):
-        if i == 0:
-            current_seq.append(temp[i])
-            continue
+    current_seq = [temp[0]]
+    for i in range(1, len(temp)):
+        # if i == 0:
+        #     current_seq.append(temp[i])
+        #     continue
         
         if temp[i] - temp[i-1] == 1:
             current_seq.append(temp[i])

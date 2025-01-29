@@ -30,6 +30,86 @@ class LinkedList:
     def make_empty(self):
         self.head = None
         self.length = 0
+        
+    def find_middle_node(self):
+        slow = fast = self.head
+        if not slow.next:
+            return slow
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+    
+    def has_loop(self):
+        slow = fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+    
+    def find_kth_from_end(linked_list, k):
+        slow = fast = linked_list.head
+        counter = k
+        while fast:
+            if counter <= 0:
+                slow = slow.next
+            fast = fast.next
+            counter -= 1
+        if counter > 0:
+            return None
+        return slow
+    
+    def partition_list(self, value):
+        temp = self.head
+        less = more = more_head = None
+        while temp:
+            if temp.value < value:
+                if not less:
+                    less = Node(temp.value)
+                    self.head = less
+                else:
+                    less.next = Node(temp.value)
+                    less = less.next
+            else:
+                if not more:
+                    more = Node(temp.value)
+                    more_head = more
+                else:
+                    more.next = Node(temp.value)
+                    more = more.next
+            temp = temp.next
+        if less:
+            less.next = more_head
+        else:
+            self.head = more_head
+            
+    def remove_duplicates(self):
+        dups = set()
+        pre = next = None
+        temp = self.head
+        while temp:
+            next = temp.next
+            if temp.value in dups:
+                if pre: pre.next = next
+                temp.next = None
+                temp = pre
+                self.length -= 1
+            else:
+                dups.add(temp.value)
+            pre = temp
+            temp = next
+            
+    def binary_to_decimal(self):
+        temp = self.head
+        dec = 0
+        counter = self.length - 1
+        while temp:
+            dec += 2**counter * temp.value
+            temp = temp.next
+            counter -= 1
+        return dec
 
     def reverse_between(self, start, end):
         if self.length <= 1 or start == end or start >= self.length or end >= self.length:
