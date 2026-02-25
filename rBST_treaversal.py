@@ -85,8 +85,7 @@ class BinarySearchTree:
         if not self.root:
             return results
         return self.traverse_post_order(self.root, results)
-    
-    
+
     def traverse_in_order(self, node, results):
         if node.left:
             self.traverse_in_order(node.left, results)

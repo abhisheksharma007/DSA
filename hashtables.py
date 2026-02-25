@@ -35,7 +35,7 @@ class HashTable:
 
 
 #advance
-def item_in_common(list1, list2):
+def check_item_in_common(list1, list2):
     # return bool(set(list1) & set(list2))
     hash_map = {}
     for i in list1:
